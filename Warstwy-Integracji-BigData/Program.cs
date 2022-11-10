@@ -5,10 +5,10 @@ using FileHelpers;
 string[] names = System.IO.File.ReadAllLines(@"C:\Git\Warstwy-Integracji-BigData\Warstwy-Integracji-BigData\Data\ImionaNadawaneDzieciom.csv");
 string[] surNamesM = System.IO.File.ReadAllLines(@"C:\Git\Warstwy-Integracji-BigData\Warstwy-Integracji-BigData\Data\NazwiskaMeskie.csv");
 string[] surNamesF = System.IO.File.ReadAllLines(@"C:\Git\Warstwy-Integracji-BigData\Warstwy-Integracji-BigData\Data\NazwiskaZenskie.csv");
-string fullNames = @"C:\Git\Warstwy-Integracji-BigData\Warstwy-Integracji-BigData\Data\Full-Names.csv";
+string fullNames2 = @"C:\Git\Warstwy-Integracji-BigData\Warstwy-Integracji-BigData\Data\Full-Names.csv";
 
 string person = String.Empty;
-Random random = new Random();
+Random random = new();
 string delimiter = ",";
 
 for(int i = 0; i < 40000000; i++)
@@ -31,8 +31,6 @@ for(int i = 0; i < 40000000; i++)
     }
     string appendText = i.ToString() + delimiter + person + Environment.NewLine;
 
-    File.AppendAllText(fullNames, appendText);
-
-    Console.WriteLine(appendText);
+    File.AppendAllText(fullNames2, appendText);
 
 }
