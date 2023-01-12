@@ -50,14 +50,7 @@ app.MapGet("/fullnames-autocomplete", async (string term) =>
 
     await using var cmd = new NpgsqlCommand("select id, name, surname from fullnames where surname like '%' || @search || '%' or name like '%' || @search || '%' limit 1000", conn); /*|| '%' limit 20"*/
     cmd.Parameters.AddWithValue("@search", term.ToUpper());
-    /*
-        {
-            Parameters =
-            {
-                new("search", "%" + term + "%")
-            }
-        };
-    */
+
     await using (var reader = await cmd.ExecuteReaderAsync())
     {
         while (await reader.ReadAsync())
@@ -73,7 +66,7 @@ app.MapGet("/fullnames-autocomplete", async (string term) =>
 
 app.Run();
 
-internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
+/*internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+}*/
